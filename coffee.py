@@ -1,8 +1,15 @@
 class Coffee:
-    """Represents a coffee item that can be ordered."""
-
     def __init__(self, name):
-        """Initialize a new Coffee item with the given name (min 3 characters)."""
+        """
+        Initialize a Coffee with a name.
+        
+        Args:
+            name (str): Name of the coffee (at least 3 characters)
+            
+        Raises:
+            TypeError: If name is not a string
+            ValueError: If name is less than 3 characters
+        """
         if not isinstance(name, str):
             raise TypeError("Name must be a string")
 
@@ -14,15 +21,39 @@ class Coffee:
 
     @property
     def name(self):
+        """
+        Get the coffee's name.
+        
+        Returns:
+            str: The coffee's name
+        """
         return self._name
 
     def add_order(self, order):
+        """
+        Add an order for this coffee.
+        
+        Args:
+            order: The Order instance to add
+        """
         self._orders.append(order)
 
     def orders(self):
+        """
+        Get all orders for this coffee.
+        
+        Returns:
+            list: List of Order instances
+        """
         return self._orders
 
     def customers(self):
+        """
+        Get unique list of customers who ordered this coffee.
+        
+        Returns:
+            list: List of unique Customer instances
+        """
         unique_customers = []
 
         for order in self._orders:
@@ -33,9 +64,21 @@ class Coffee:
         return unique_customers
 
     def num_orders(self):
+        """
+        Get the total count of orders for this coffee.
+        
+        Returns:
+            int: Number of orders (0 if none)
+        """
         return len(self._orders)
 
     def average_price(self):
+        """
+        Calculate the mean price of all orders for this coffee.
+        
+        Returns:
+            float: Average price (0 if no orders)
+        """
         if not self._orders:
             return 0
 

@@ -1,11 +1,7 @@
 class Customer:
-    """
-    Represents a customer of the coffee shop.
-    """
-    
     def __init__(self, name):
         """
-        Initialize a new Customer.
+        Initialize a Customer with a name.
         
         Args:
             name (str): Customer's name (1-15 characters)
@@ -16,10 +12,21 @@ class Customer:
     
     @property
     def name(self):
+        """Get the customer's name."""
         return self._name
     
     @name.setter
     def name(self, value):
+        """
+        Set the customer's name.
+        
+        Args:
+            value (str): New name (must be str, 1-15 chars)
+            
+        Raises:
+            TypeError: If name is not a string
+            ValueError: If name length is not 1-15 characters
+        """
         if not isinstance(value, str):
             raise TypeError("Name must be a string")
         
