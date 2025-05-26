@@ -39,8 +39,8 @@ class Order:
 
         self._price = price
 
-        # Add this order to the coffee's orders
-        coffee._orders.append(self)
+        # Use the coffee's add_order method instead of direct access
+        coffee.add_order(self)
 
     @property
     def customer(self):

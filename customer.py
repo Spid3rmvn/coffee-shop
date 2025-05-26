@@ -73,6 +73,47 @@ class Customer:
         """
         from order import Order
         
+        # Create the order
         order = Order(self, coffee, price)
+        
+        # Add to customer's orders
         self._orders.append(order)
+        
+        # Add to coffee's orders
+        coffee.add_order(order)
+        
         return order
+    
+    @classmethod
+    def most_aficionado(cls, coffee):
+        """
+        Find the customer who has spent the most money on a specific coffee.
+        
+        Args:
+            coffee (Coffee): The coffee to check
+            
+        Returns:
+            Customer or None: The customer who spent the most, or None if no orders exist
+        """
+        if not coffee.orders():
+            return None
+        
+        # Dictionary to track total spending per customer
+        customer_spending = {}
+        
+        for order in coffee.orders():
+            customer = order.customer
+            if customer not in customer_spending:
+                customer_spending[customer] = 0
+            customer_spending[customer] += order.price
+        
+        # Find the customer with the highest spending
+        max_customer = None
+        max_spending = 0
+        
+        for customer, total in customer_spending.items():
+            if total > max_spending:
+                max_spending = total
+                max_customer = customer
+        
+        return max_customer
