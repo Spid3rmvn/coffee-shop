@@ -79,7 +79,7 @@ class Customer:
         # Add to customer's orders
         self._orders.append(order)
         
-        # Add to coffee's orders
+        # Add to coffee's orders using its add_order method
         coffee.add_order(order)
         
         return order

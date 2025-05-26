@@ -39,9 +39,7 @@ class Order:
 
         self._price = price
 
-        # Use the coffee's add_order method instead of direct access
-        coffee.add_order(self)
-
+      
     @property
     def customer(self):
         """
