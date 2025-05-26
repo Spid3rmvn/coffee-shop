@@ -38,6 +38,9 @@ class Order:
             raise ValueError("price must be between 1.0 and 10.0")
 
         self._price = price
+        
+        # Add this order to the coffee's orders
+        coffee.add_order(self)
 
       
     @property

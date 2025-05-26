@@ -67,7 +67,7 @@ class Customer:
         Args:
             coffee (Coffee): The coffee being ordered
             price (float): The price of the order
-            
+        
         Returns:
             Order: The newly created order
         """
@@ -79,8 +79,8 @@ class Customer:
         # Add to customer's orders
         self._orders.append(order)
         
-        # Add to coffee's orders using its add_order method
-        coffee.add_order(order)
+        # Order is already added to coffee's orders in Order.__init__
+        # So we don't need to call coffee.add_order(order) here
         
         return order
     
